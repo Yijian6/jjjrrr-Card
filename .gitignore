@@ -1,0 +1,6 @@
+.DS_Store
+Thumbs.db
+.wrangler/
+.cloudflare/
+node_modules/
+*.png
