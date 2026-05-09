@@ -680,6 +680,127 @@
       }
     }
 
+    @media (orientation: landscape) and (max-width: 980px) and (max-height: 520px) {
+      html,
+      body {
+        overflow: hidden;
+      }
+
+      .main {
+        padding: 0.65rem;
+        overflow: hidden;
+      }
+
+      .main::before {
+        inset: 0.65rem;
+        border-radius: 20px;
+      }
+
+      .main-grid {
+        min-height: 100svh;
+        display: block;
+        position: relative;
+      }
+
+      .topbar {
+        position: absolute;
+        top: 0.95rem;
+        left: 1rem;
+        right: 1rem;
+        z-index: 4;
+        padding: 0;
+        align-items: flex-start;
+        font-size: 0.62rem;
+        letter-spacing: 0.16em;
+      }
+
+      .topbar-left,
+      .topbar-right {
+        width: auto;
+        gap: 0.55rem;
+      }
+
+      .topbar .meta-chip {
+        padding: 0.42rem 0.58rem;
+        background: rgba(8, 13, 22, 0.34);
+      }
+
+      .topbar-left .meta-chip:nth-child(2),
+      .topbar-right .meta-chip:nth-child(2) {
+        display: none;
+      }
+
+      .hero {
+        min-height: 100svh;
+        padding: 0 5vw;
+        justify-content: center;
+      }
+
+      .hero-core {
+        width: min(760px, 92vw);
+        padding: 0;
+        transform: translateY(0.4rem);
+      }
+
+      .hero-core::before {
+        inset: -22% -6%;
+      }
+
+      .hero-core::after {
+        inset: -34% 4%;
+      }
+
+      .kicker {
+        margin-bottom: 0.9rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.28em;
+      }
+
+      .name {
+        font-size: clamp(4.4rem, 16vw, 7.4rem);
+        letter-spacing: 0.12em;
+        text-indent: 0.12em;
+      }
+
+      .inscription {
+        margin-top: 0.9rem;
+        width: min(620px, 86vw);
+        font-size: 0.92rem;
+        line-height: 1.65;
+        min-height: auto;
+      }
+
+      .inscription small {
+        margin-top: 0.45rem;
+        font-size: 0.72em;
+      }
+
+      .footerbar {
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        bottom: 0.9rem;
+        z-index: 4;
+        padding: 0;
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+      }
+
+      .footer-note {
+        display: none;
+      }
+
+      .footerbar-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .footerbar .meta-chip {
+        padding: 0.42rem 0.58rem;
+        background: rgba(8, 13, 22, 0.28);
+      }
+    }
+
     @media (orientation: portrait) and (max-width: 980px) {
       .orientation.mobile-only {
         opacity: 1;
