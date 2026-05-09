@@ -199,6 +199,50 @@
       pointer-events: none;
     }
 
+    .rotate-cue {
+      width: 88px;
+      height: 88px;
+      margin-bottom: 1.6rem;
+      position: relative;
+      opacity: 0.86;
+    }
+
+    .phone-mark {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 34px;
+      height: 58px;
+      border: 1px solid rgba(244, 247, 252, 0.72);
+      border-radius: 8px;
+      transform: translate(-50%, -50%);
+      box-shadow:
+        0 0 26px rgba(145, 188, 255, 0.12),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      animation: rotatePhone 2.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+
+    .phone-mark::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 5px;
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(244, 247, 252, 0.62);
+      transform: translateX(-50%);
+    }
+
+    .rotate-ring {
+      position: absolute;
+      inset: 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(145, 188, 255, 0.18);
+      border-right-color: rgba(244, 247, 252, 0.58);
+      animation: orbitRing 2.8s linear infinite;
+    }
+
     .label {
       display: inline-flex;
       align-items: center;
@@ -592,6 +636,23 @@
       }
     }
 
+    @keyframes rotatePhone {
+      0%, 18% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      48%, 72% {
+        transform: translate(-50%, -50%) rotate(90deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+    }
+
+    @keyframes orbitRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
     @media (max-width: 980px) {
       .main::before {
         inset: 1.8vh 1.4vw;
@@ -616,6 +677,41 @@
       .intro-card,
       .orientation-card {
         padding: 1.35rem;
+      }
+
+      .orientation-card {
+        width: min(350px, 88vw);
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .orientation-card .label {
+        margin-bottom: 0.95rem;
+      }
+
+      .orientation-card .label::before {
+        width: 34px;
+      }
+
+      .orientation-card h2 {
+        font-size: clamp(1.8rem, 8vw, 2.6rem);
+        letter-spacing: 0.08em;
+      }
+
+      .orientation-card p {
+        margin-top: 0.7rem;
+        max-width: 14rem;
+        font-size: 0.98rem;
+        line-height: 1.7;
+      }
+
+      .orientation-card .intro-actions {
+        margin-top: 1.45rem;
+        justify-content: center;
       }
 
       .hint-strip,
@@ -846,9 +942,13 @@
   <div class="frame">
     <section class="orientation mobile-only" id="orientationOverlay">
       <div class="orientation-card">
-        <div class="label">Display Notice</div>
-        <h2>建议横屏浏览</h2>
-        <p>这是一页带有展厅仪式感的私人档案网页。横向视野能更完整地保留留白、光感和名字的中心构图。若当前设备无法横屏，也可继续查看，页面会自动降级适配。</p>
+        <div class="rotate-cue" aria-hidden="true">
+          <div class="rotate-ring"></div>
+          <div class="phone-mark"></div>
+        </div>
+        <div class="label">Rotate to enter</div>
+        <h2>请横屏浏览</h2>
+        <p>把手机横过来，画面会更完整。</p>
         <div class="intro-actions">
           <button class="enter-btn" id="continuePortrait">继续查看</button>
         </div>
